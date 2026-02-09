@@ -901,6 +901,9 @@ MspHelper.prototype.process_data = function (dataHandler) {
                         case MSPCodes.CRAFT_NAME:
                             FC.CONFIG.craftName = self.getText(data);
                             break;
+                        case MSPCodes.CUSTOM_STRING01:
+                            FC.CONFIG.customString01 = self.getText(data);
+                            break;
                         case MSPCodes.PID_PROFILE_NAME:
                             FC.CONFIG.pidProfileNames[FC.CONFIG.profile] = self.getText(data);
                             break;
@@ -2285,6 +2288,9 @@ MspHelper.prototype.crunch = function (code, modifierCode = undefined) {
                     break;
                 case MSPCodes.CRAFT_NAME:
                     self.setText(buffer, modifierCode, FC.CONFIG.craftName, 16);
+                    break;
+                case MSPCodes.CUSTOM_STRING01:
+                    self.setText(buffer, modifierCode, FC.CONFIG.customString01 ?? "", 16);
                     break;
                 case MSPCodes.PID_PROFILE_NAME:
                     self.setText(buffer, modifierCode, FC.CONFIG.pidProfileNames[FC.CONFIG.profile], 8);

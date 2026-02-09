@@ -37,6 +37,7 @@ const VirtualFC = {
 
         virtualFC.CONFIG.craftName = "BetaFlight";
         virtualFC.CONFIG.pilotName = "BF pilot";
+        virtualFC.CONFIG.customString01 = "LAND NOW";
 
         virtualFC.FEATURE_CONFIG.features = new Features(FC.CONFIG);
         virtualFC.FEATURE_CONFIG.features.setMask(0);

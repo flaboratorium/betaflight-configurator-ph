@@ -6603,6 +6603,12 @@
     "configurationPilotNameHelp": {
         "message": "Kann im OSD angezeigt werden.<\/br>Kann über <b>pilot_name<\/b> CLI-Variable gesetzt werden."
     },
+	"configurationCustomString01": {
+        "message": "Land now Override"
+    },
+    "configurationCustomString01Help": {
+        "message": "Ersetzt die LAND NOW Message im OSD"
+    },
     "configurationFpvCamAngleDegrees": {
         "message": "FPV-Kamera Aufstellwinkel [Grad]"
     },

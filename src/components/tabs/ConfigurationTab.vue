@@ -118,6 +118,19 @@
                                 </label>
                                 <div class="helpicon cf_tip" :title="$t('configurationPilotNameHelp')"></div>
                             </div>
+                            <div class="number customString01" v-if="showPilotName">
+                                <label>
+                                    <input
+                                        type="text"
+                                        v-model="customString01"
+                                        maxlength="16"
+                                        style="width: 100px"
+                                        :aria-label="$t('configurationCustomString01')"
+                                    />
+                                    <span>{{ $t("configurationCustomString01") }}</span>
+                                </label>
+                                <div class="helpicon cf_tip" :title="$t('configurationCustomString01Help')"></div>
+                            </div>
                         </div>
                     </div>
 
@@ -772,6 +785,8 @@ export default defineComponent({
 
         const craftName = ref("");
         const pilotName = ref("");
+        const customString01 = ref("");
+
         const showPilotName = ref(false);
 
         const isSaving = ref(false);
@@ -1133,6 +1148,13 @@ export default defineComponent({
                     );
                 }
 
+                if (semver.gte(FC.CONFIG.apiVersion, API_VERSION_1_45)) {
+                    await MSP.promise(
+                        MSPCodes.MSP2_GET_TEXT,
+                        mspHelper.crunch(MSPCodes.MSP2_GET_TEXT, MSPCodes.CUSTOM_STRING01),
+                    );
+                }
+
                 if (!isMounted.value) return;
 
                 await MSP.promise(MSPCodes.MSP_ADVANCED_CONFIG);
@@ -1176,6 +1198,7 @@ export default defineComponent({
             if (semver.gte(FC.CONFIG.apiVersion, API_VERSION_1_45)) {
                 craftName.value = FC.CONFIG.craftName;
                 pilotName.value = FC.CONFIG.pilotName;
+                customString01.value = FC.CONFIG.customString01;
                 showPilotName.value = true;
             } else {
                 craftName.value = FC.CONFIG.name;
@@ -1345,6 +1368,7 @@ export default defineComponent({
                 if (semver.gte(FC.CONFIG.apiVersion, API_VERSION_1_45)) {
                     FC.CONFIG.craftName = craftName.value;
                     FC.CONFIG.pilotName = pilotName.value;
+                    FC.CONFIG.customString01 = customString01.value;
                 } else {
                     FC.CONFIG.name = craftName.value;
                 }
@@ -1428,6 +1452,10 @@ export default defineComponent({
                         MSPCodes.MSP2_SET_TEXT,
                         mspHelper.crunch(MSPCodes.MSP2_SET_TEXT, MSPCodes.PILOT_NAME),
                     );
+                    await MSP.promise(
+                        MSPCodes.MSP2_SET_TEXT,
+                        mspHelper.crunch(MSPCodes.MSP2_SET_TEXT, MSPCodes.CUSTOM_STRING01),
+                    );
                 }
 
                 await MSP.promise(MSPCodes.MSP_SET_RX_CONFIG, mspHelper.crunch(MSPCodes.MSP_SET_RX_CONFIG));
@@ -1483,6 +1511,7 @@ export default defineComponent({
             fpvCamAngleDegrees,
             craftName,
             pilotName,
+            customString01,
             showPilotName,
             featuresList,
             beepersList,
