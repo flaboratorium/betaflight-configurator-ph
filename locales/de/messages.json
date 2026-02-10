@@ -6604,10 +6604,16 @@
         "message": "Kann im OSD angezeigt werden.<\/br>Kann über <b>pilot_name<\/b> CLI-Variable gesetzt werden."
     },
 	"configurationCustomString01": {
-        "message": "Land now Override"
+        "message": "Override: OSD_WARNING_BATTERY_CRITICAL"
     },
     "configurationCustomString01Help": {
-        "message": "Ersetzt die LAND NOW Message im OSD"
+        "message": "Überschreibt die OSD_WARNING_BATTERY_CRITICAL Warnung im OSD"
+    },
+	"configurationCustomString02": {
+        "message": "Override: OSD_WARNING_BATTERY_WARNING"
+    },
+    "configurationCustomString02Help": {
+        "message": "Überschreibt die OSD_WARNING_BATTERY_WARNING Warnung im OSD"
     },
     "configurationFpvCamAngleDegrees": {
         "message": "FPV-Kamera Aufstellwinkel [Grad]"

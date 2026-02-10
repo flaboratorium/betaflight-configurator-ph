@@ -209,6 +209,7 @@ const MSPCodes = {
     RATE_PROFILE_NAME: 4,
     BUILD_KEY: 5,
     CUSTOM_STRING01: 11,
+    CUSTOM_STRING02: 12,
 };
 
 export default MSPCodes;
